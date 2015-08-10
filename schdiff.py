@@ -70,13 +70,13 @@ pom = om.load()
 
 start_time = time.time()
 src0 = split_process_old(om)
-om = Image.merge(om.mode, src0)
-om.save("tmp_new.jpg")
+#om = Image.merge(om.mode, src0)
+#om.save("tmp_new.jpg")
 del om
 del pom
 src1 = split_process_new(im)
-im = Image.merge(im.mode, src1)
-im.save("tmp_old.jpg")
+#im = Image.merge(im.mode, src1)
+#im.save("tmp_old.jpg")
 del im
 del pim
 
