@@ -6,7 +6,7 @@ taken with PDFFILL.
 
 Prerequistes:
 Python 2.7.10
-Python Image Library 1.7
+Pillow 2.9 or newer
 
 Command Line Usage:
 schdiff.py old.jpg new.jpg diff.png
