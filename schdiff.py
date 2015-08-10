@@ -1,5 +1,5 @@
 """
-schdiff.py takes two images and produces a differenced output
+schdiff.py takes two schematic images and produces a differenced output.
 
 Usage:
 schdiff.py old.jpg new.jpg diff.png
@@ -34,12 +34,10 @@ def split_process_new(im=None):
     return src
 
 def xor_using_image_math(src0=None, src1=None):
-    start_time = time.time()
     rTmp = ImageMath.eval("a^b", a=src0[R], b=src1[R]).convert('L')
     gTmp = ImageMath.eval("a^b", a=src0[G], b=src1[G]).convert('L')
     bTmp = ImageMath.eval("a^b", a=src0[B], b=src1[B]).convert('L')
     merged = Image.merge("RGB", (rTmp, gTmp, bTmp))
-    print "Fast Method Time %8.3f" % (time.time() - start_time,)
     return merged
 
 ##############################################################################
@@ -62,6 +60,8 @@ print "Image Mode:  %s" % im.mode
 pim = im.load()
 pom = om.load()
 
+
+start_time = time.time()
 src0 = split_process_old(om)
 om = Image.merge(om.mode, src0)
 om.save("tmp_new.jpg")
@@ -74,6 +74,7 @@ del im
 del pim
 
 nm = xor_using_image_math(src0, src1)
+print "Fast Method Time %8.3f" % (time.time() - start_time,)
 tbn_size= (int(width/4), int(height/4))
 nm.thumbnail(tbn_size, Image.ANTIALIAS)
 nm.save(sys.argv[3], compress_level=9) #optimize=True)
