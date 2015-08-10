@@ -1,7 +1,14 @@
 """
 schdiff.py takes two schematic images and produces a differenced output.
 
-Usage:
+The script was intended for use with Mentor Design Capture schematic images
+taken with PDFFILL.
+
+Prerequistes:
+Python 2.7.10
+Python Image Library 1.7
+
+Command Line Usage:
 schdiff.py old.jpg new.jpg diff.png
 """
 from PIL import Image, ImageMath
